@@ -95,11 +95,10 @@ function changeCity(event) {
     axios.get(apiUrlGeo).then(showTemperature);
     let h1 = document.querySelector("h1");
     h1.innerHTML = `Your Location 😎`;
+   
   }
   let currentLocationButton = document.querySelector("#currentLocation");
   currentLocationButton.addEventListener("click", currentPosition);
-  
-  
   
   
   
