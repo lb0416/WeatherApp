@@ -63,27 +63,6 @@ h3 {
     text-decoration: none;
     color:#dbd8e3;
   }
-  
-  .extra-days {
-    border: 2px solid #dbd8e3;
-    max-width: 100px;
-    border-radius: 20px;
-  }
-  .day-one:hover {
-    color: red;
-  }
-  .day-two:hover {
-    color: red;
-  }
-  .day-three:hover {
-    color: red;
-  }
-  .day-four:hover {
-    color: red;
-  }
-  .day-five:hover {
-    color: red;
-  }
   .tempLink:hover {
     background-color: #dbd8e3; opacity: 0.70; border-radius: 50px;
     color:#352f44;
