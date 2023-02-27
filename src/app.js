@@ -18,6 +18,7 @@ let now = new Date();
 h2.innerHTML = formatDate(now);
 
 function formatDate(date) {
+  let dateDay = now.getDate();
   let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   let day = days[now.getDay()];
   let months = [
@@ -44,7 +45,7 @@ function formatDate(date) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `Where you are is: ${day} ${month}, ${hours}:${minutes}`;
+  return `Where you are is: ${day} ${dateDay} ${month}, ${hours}:${minutes}`;
 }
 
 //Real Data API
@@ -64,6 +65,7 @@ function showTemperature(response) {
   wind.innerHTML = `Wind is ${Math.round(response.data.wind.speed)} mph`;
   let cityElement = document.querySelector("h1");
   cityElement.innerHTML = response.data.name;
+  console.log(response);
 }
 
 //Current Location Button
