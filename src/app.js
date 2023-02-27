@@ -65,7 +65,9 @@ function showTemperature(response) {
   wind.innerHTML = `Wind is ${Math.round(response.data.wind.speed)} mph`;
   let cityElement = document.querySelector("h1");
   cityElement.innerHTML = response.data.name;
-  console.log(response);
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  iconElement.setAttribute("alt", response.data.weather[0].description )
 }
 
 //Current Location Button
