@@ -64,7 +64,6 @@ function showTemperature(response) {
   wind.innerHTML = `Wind is ${Math.round(response.data.wind.speed)} mph`;
   let cityElement = document.querySelector("h1");
   cityElement.innerHTML = response.data.name;
-  console.log(response);
 }
 
 //Current Location Button
