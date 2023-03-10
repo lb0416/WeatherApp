@@ -99,7 +99,7 @@ function displayForecast(){
   })
   
   
-  
+  forecastHTML=`</div>`;
   forecastElement.innerHTML = forecastHTML;
   }
   
