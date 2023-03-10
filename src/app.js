@@ -70,6 +70,41 @@ function showTemperature(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description )
 }
 
+//Forecast
+function displayForecast(){
+  let forecastElement = document.querySelector("#forecast");
+  
+  let forecastHTML = `<div class="row">`;
+  let days = ["Fri","Sat", "Sun", "Mon", "Tues"];
+  
+  days.forEach(function(day){
+    forecastHTML = forecastHTML + 
+    `   
+      <div class="col-2">
+          <div class="weather-forecast-date">
+           ${day}
+          </div>
+            <img src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/069/360/original/cloud.jpg?1677539382" alt="" width="43">
+              <div class="weather-forecast-temperature">
+              <span class="weather-forecast-maximum"> 
+                6°
+              </span>
+          |
+              <span class="weather-forecast-minimum"> 
+              3°
+              </span>
+          </div>
+        </div>
+    `;
+  })
+  
+  
+  
+  forecastElement.innerHTML = forecastHTML;
+  }
+  
+  displayForecast();
+  
 //Current Location Button
 function currentPosition(position) {
   navigator.geolocation.getCurrentPosition(currentPosition);
