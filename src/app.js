@@ -98,13 +98,12 @@ function displayForecast(){
     `;
   })
   
-  
-  forecastHTML=`</div>`;
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
-  }
-  
-  displayForecast();
-  
+}
+
+displayForecast();
+
 //Current Location Button
 function currentPosition(position) {
   navigator.geolocation.getCurrentPosition(currentPosition);
