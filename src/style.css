@@ -1,9 +1,8 @@
 body {
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/069/182/original/sky.jpg?1677421969");
   background-size: cover;
-  max-width: 600px;
-  max-height: 100%;
-  
+  max-width: 500px;
+  max-height:100%;
 }
 h3 {
   text-align: center;
@@ -29,10 +28,12 @@ footer {
 }
 
 .container {
+  display:block;
+  max-width: 500px;
+  max-height:100%;
   color: #dbd8e3;
   background: #352f44;
   opacity: 0.7;
-  max-width: 100%;
   border-radius: 35px;
   border: 1px solid black;
   text-align: center;
