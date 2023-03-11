@@ -1,8 +1,7 @@
 body {
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/069/182/original/sky.jpg?1677421969");
   background-size: cover;
-  max-width: 500px;
-  max-height:100%;
+
 }
 h3 {
   text-align: center;
@@ -13,11 +12,15 @@ h3 {
 h4 {
   text-transform: capitalize;
 }
+
+
 li {
   display: inline;
-  margin: 10px;
+  text-align: center;
+  margin: 0 auto;
   padding: 10px;
   text-transform: capitalize;
+  
 }
 
 footer {
@@ -29,7 +32,6 @@ footer {
 
 .container {
   display:block;
-  max-width: 500px;
   max-height:100%;
   color: #dbd8e3;
   background: #352f44;
@@ -83,9 +85,9 @@ footer {
   margin-bottom: 15px;
   text-align:center;
   padding: 5px;
-  color: #dbd8e3
-  
+  color: #dbd8e3;
 }
+
 .weather-forecast-date{
   font-size:20px;
   opacity:0.7;
@@ -97,6 +99,7 @@ footer {
 .weather-forecast-minimum {
   opacity: 0.6;
 }
+
 
 
 .tempLink:hover {
