@@ -80,7 +80,7 @@ function showTemperature(response) {
   let feelsLike = document.querySelector("#feelsLike");
   feelsLike.innerHTML = `It feels like ${Math.round(
     response.data.temperature.feels_like
-  )}°`;
+  )}°c`;
 
   let description = document.querySelector("#description");
   description.innerHTML = response.data.condition.description;
@@ -103,11 +103,9 @@ function showTemperature(response) {
 
 //Forecast
 function showForecast(response) {
-  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
 
   let forecast = response.data.daily;
-  console.log(forecast);
 
   let forecastHTML = `<div class="row">`;
 
@@ -123,11 +121,11 @@ function showForecast(response) {
             <img src=${forecastDay.condition.icon_url} alt="" width="43">
               <div class="weather-forecast-temperature">
               <span class="weather-forecast-maximum"> 
-                ${Math.round(forecastDay.temperature.maximum)}°
+                ${Math.round(forecastDay.temperature.maximum)}°c
               </span>
           |
               <span class="weather-forecast-minimum"> 
-              ${Math.round(forecastDay.temperature.minimum)}°
+              ${Math.round(forecastDay.temperature.minimum)}°c
               </span>
           </div>
         </div>
@@ -144,7 +142,6 @@ function currentPosition() {
 }
 
 function getCurrentCity(position) {
-  console.log(position);
   let apiKey = "5f7905da385tefb6942o90bcb57f0ab1";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
