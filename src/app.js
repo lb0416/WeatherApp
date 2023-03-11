@@ -47,6 +47,14 @@ function formatDate(date) {
   }
   return `Where you are is: ${day} ${dateDay} ${month}, ${hours}:${minutes}`;
 }
+//Forecast API 
+function getForecast (coordinates) {
+console.log(coordinates);
+let apiKey = "390dab645294626fa4cd0e0314eb3be6";
+let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+axios.get(apiUrl).then(displayForecast);
+
+}
 
 //Real Data API
 function showTemperature(response) {
@@ -68,10 +76,12 @@ function showTemperature(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   iconElement.setAttribute("alt", response.data.weather[0].description )
+
+  getForecast (response.data.coord);
 }
 
 //Forecast
-function displayForecast(){
+function displayForecast(response){
   let forecastElement = document.querySelector("#forecast");
   
   let forecastHTML = `<div class="row">`;
@@ -101,8 +111,6 @@ function displayForecast(){
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
-
-displayForecast();
 
 //Current Location Button
 function currentPosition(position) {
