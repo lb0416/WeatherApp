@@ -19,7 +19,7 @@ function formatDate(date) {
     "Sep",
     "Oct",
     "Nov",
-    "Dec"
+    "Dec",
   ];
   let month = months[now.getMonth()];
 
@@ -34,15 +34,24 @@ function formatDate(date) {
   return `Where you are is: ${day} ${dateDay} ${month}, ${hours}:${minutes}`;
 }
 
+function formatDay(timestamp){
+let date = new Date(timestamp * 1000);
+let day = date.getDay();
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri","Sat"];
+return days [day];
+}
+
 //Search Form
 function changeCity(event) {
   event.preventDefault();
   let h1 = document.querySelector("h1");
   let locationInput = document.querySelector("#location-input");
   h1.innerHTML = `${locationInput.value}`;
+  console.log(locationInput.value);
   let apiKey = "5f7905da385tefb6942o90bcb57f0ab1";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${locationInput.value}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
+  console.log(apiUrl);
 }
 
 let form = document.querySelector("#search-form");
@@ -53,12 +62,17 @@ function getForecast(coordinates) {
   let lat = coordinates.latitude;
   let lon = coordinates.longitude;
   let apiKey = "5f7905da385tefb6942o90bcb57f0ab1";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}`;
   axios.get(apiUrl).then(showForecast);
+  console.log(apiUrl);
 }
 
 //Real Data API
 function showTemperature(response) {
+  console.log(response);
+  let cityElement = document.querySelector("h1");
+  cityElement.innerHTML = response.data.city;
+
   let temperature = Math.round(response.data.temperature.current);
   let realTemp = document.querySelector("#temp");
   realTemp.innerHTML = temperature;
@@ -76,8 +90,6 @@ function showTemperature(response) {
 
   let wind = document.querySelector("#wind");
   wind.innerHTML = `Wind is ${Math.round(response.data.wind.speed)} mph`;
-  let cityElement = document.querySelector("h1");
-  cityElement.innerHTML = response.data.name;
 
   let icon = response.data.condition.icon;
   let currentWeatherIcon = document.querySelector(`#icon`);
@@ -91,35 +103,35 @@ function showTemperature(response) {
 
 //Forecast
 function showForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
 
   let forecast = response.data.daily;
   console.log(forecast);
 
-  let icon = response.data.condition.icon_url;
-
   let forecastHTML = `<div class="row">`;
 
-  forecast.forEach(function (forecastDay) {
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6){
     forecastHTML =
       forecastHTML +
       `   
       <div class="col-2">
           <div class="weather-forecast-date">
-           ${forecastDay.time}
+           ${formatDay(forecastDay.time)}
           </div>
-            <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${icon}.png" alt="" width="43">
+            <img src=${forecastDay.condition.icon_url} alt="" width="43">
               <div class="weather-forecast-temperature">
               <span class="weather-forecast-maximum"> 
-                6°
+                ${Math.round(forecastDay.temperature.maximum)}°
               </span>
           |
               <span class="weather-forecast-minimum"> 
-              3°
+              ${Math.round(forecastDay.temperature.minimum)}°
               </span>
           </div>
         </div>
-    `;
+    `;}
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -127,11 +139,15 @@ function showForecast(response) {
 }
 
 //Current Location Button
-function currentPosition(position) {
-  navigator.geolocation.getCurrentPosition(currentPosition);
+function currentPosition() {
+  navigator.geolocation.getCurrentPosition(getCurrentCity);
+}
+
+function getCurrentCity(position) {
+  console.log(position);
   let apiKey = "5f7905da385tefb6942o90bcb57f0ab1";
-  let lat = position.coordinates.latitude;
-  let lon = position.coordinates.longitude;
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
   let apiUrlGeo = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   axios.get(apiUrlGeo).then(showTemperature);
 }
