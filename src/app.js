@@ -47,11 +47,9 @@ function changeCity(event) {
   let h1 = document.querySelector("h1");
   let locationInput = document.querySelector("#location-input");
   h1.innerHTML = `${locationInput.value}`;
-  console.log(locationInput.value);
   let apiKey = "5f7905da385tefb6942o90bcb57f0ab1";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${locationInput.value}&key=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
-  console.log(apiUrl);
 }
 
 let form = document.querySelector("#search-form");
@@ -64,12 +62,10 @@ function getForecast(coordinates) {
   let apiKey = "5f7905da385tefb6942o90bcb57f0ab1";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}`;
   axios.get(apiUrl).then(showForecast);
-  console.log(apiUrl);
 }
 
 //Real Data API
 function showTemperature(response) {
-  console.log(response);
   let cityElement = document.querySelector("h1");
   cityElement.innerHTML = response.data.city;
 
