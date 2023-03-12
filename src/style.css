@@ -1,14 +1,17 @@
 body {
   background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/069/182/original/sky.jpg?1677421969");
   background-size: cover;
-
+  margin: 0 auto;
 }
+
 h3 {
   text-align: center;
   margin: 7px;
   padding: 3px;
   color: #dbd8e3;
+  font-weight: bolder;
 }
+
 h4 {
   text-transform: capitalize;
 }
@@ -32,6 +35,7 @@ footer {
 
 .container {
   display:block;
+  max-width: 500px;
   max-height:100%;
   color: #dbd8e3;
   background: #352f44;
@@ -39,7 +43,6 @@ footer {
   border-radius: 35px;
   border: 1px solid black;
   text-align: center;
-  margin: 40px auto;
   padding-bottom: 15px;
   
 }
@@ -74,10 +77,8 @@ footer {
   border-radius: 10px;
   padding: 10px;
 }
-.tempLink {
-  text-decoration: none;
-  color: #dbd8e3;
-}
+
+
 .weather-forecast {
   margin-top: 20px;
   margin-left: 15px;
@@ -98,16 +99,4 @@ footer {
 }
 .weather-forecast-minimum {
   opacity: 0.6;
-}
-
-
-
-.tempLink:hover {
-  background-color: #dbd8e3;
-  opacity: 0.7;
-  border-radius: 50px;
-  color: #352f44;
-  text-decoration: underline;
-  transition: all 200ms ease-in-out;
-  cursor: pointer;
 }

@@ -152,24 +152,6 @@ function getCurrentCity(position) {
 let currentLocationButton = document.querySelector("#currentLocation");
 currentLocationButton.addEventListener("click", currentPosition);
 
-//celcius-fahrenheit
-function celusToFahrenheit(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temp");
-  let celcius = temperature.innerHTML;
-  temperature.innerHTML = Math.round(celcius * 1.8 + 32);
-}
-function fahrenheitToCelsius(event) {
-  event.preventDefault();
-  let temperature = document.querySelector("#temp");
-  let fahrenheit = temperature.innerHTML;
-  temperature.innerHTML = Math.round(((fahrenheit - 32) * 5) / 9);
-}
-
-let fahrenheit = document.querySelector("#fahrenheit-temp");
-fahrenheit.addEventListener("click", celusToFahrenheit);
-let celcius = document.querySelector("#celcius-temp");
-celcius.addEventListener("click", fahrenheitToCelsius);
 
 //Load screen
 let apiKey = "5f7905da385tefb6942o90bcb57f0ab1";
